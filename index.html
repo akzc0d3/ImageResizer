@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="./js/opencv.js" async></script>
+  <link rel="stylesheet" href="./assets/font-awesome/all.css">
+  <link rel="stylesheet" href="./style.css">
+  <title>Image Resizer</title>
+</head>
+
+<body>
+
+
+  <div id="overlay-main">
+    <div class="overlay-container">
+      <div class="cross"><i class="fas fa-times" onclick="dissmissOverlay()"></i></div>
+      <div class="heading">
+        <h1>Welcome,</h1>
+      </div>
+      <div class="summary"> Resize and download image with this free website<br> Enjoy :) </div>
+    </div>
+  </div>
+
+  <div class="app-container">
+    <div id="input-area">
+      <div class="headers">
+        <i class="fas fa-cloud-upload-alt"></i>
+        <header>Drop your image here...</header>
+        <button>Browse File</button>
+        <input type="file" id="browse-inp" accept="image/*" onchange="loadImage(event)" hidden>
+      </div>
+
+      <canvas class="visible-canvas" id="input-canvas" width=800 height=600></canvas>
+      <canvas hidden id="crop-canvas"></canvas>
+    </div>
+
+    <div class="inputs">
+      <label for="editor">Select Edit mode</label>
+      <select name="editor" id="editor">
+        <option value="resize">Resize</option>
+        <option value="crop">Crop</option>
+      </select>
+
+      <div id="editor-resize">
+        <h1>Resize your Image</h1>
+        <form>
+          <br><br>
+          <label for="imgWidth">Width</label>
+          <input type="number" id="imgWidth" placeholder="Enter width in px" name="imgWidth" min="10">
+          <br>
+
+          <label for="imgHeight">Height</label>
+          <input type="number" id="imgHeight" placeholder="Enter height in px" name="imgHeight" min="10">
+          <br>
+
+          <input type="checkbox" id="ratioCheck" name="ratioCheck" checked>
+          <label for="ratioCheck">Aspect-Ratio</label>
+        </form>
+        <button type="submit" id="resize">Resize</button>
+      </div>
+
+      <div hidden id="editor-crop">
+        <h1>Crop your Image</h1>
+
+        <button type="submit" id="cropBtn">Crop</button>
+      </div>
+
+
+    </div>
+  </div>
+  <div id="output">
+    <canvas class="visible-canvas" id="output-canvas">
+      <img src="" id="resized-img" alt="">
+    </canvas> <br>
+    <button id="downloadBtn">Download</button>
+  </div>
+  <script src="./js/main.js"></script>
+</body>
+
+</html>
